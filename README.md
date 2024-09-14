@@ -1,3 +1,6 @@
+> [!WARNING]
+> Este proyecto es un ejemplo de una aplicación de FastAPI con MariaDB en Kubernetes. No está destinado para entornos de producción y no garantiza la seguridad de los datos. La mayoría del código ha sido desarrollado usando ChatGPT o1-preview.
+
 # Aplicación de Ejemplo: FastAPI con MariaDB en Kubernetes
 
 Esta es una aplicación de ejemplo desarrollada en Python utilizando FastAPI, diseñada para propósitos de pruebas y demostraciones. La aplicación expone una API REST que permite listar, obtener y crear cursos, conectándose a una base de datos MariaDB. Está preparada para ser desplegada en Kubernetes y utiliza GitHub Actions para construir y publicar la imagen Docker en GitHub Container Registry (GHCR).
