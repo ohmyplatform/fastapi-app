@@ -71,3 +71,16 @@ def create_course(course: CourseCreate, db=Depends(get_db)):
     db.commit()
     db.refresh(db_course)
     return db_course
+
+@app.get("/health/live", include_in_schema=False)
+def liveness():
+    return {"status": "alive"}
+
+@app.get("/health/ready", include_in_schema=False)
+def readiness(db=Depends(get_db)):
+    try:
+        # Realizar una consulta simple para verificar la conexión a la base de datos
+        db.execute("SELECT 1")
+    except SQLAlchemyError:
+        raise HTTPException(status_code=500, detail="Error en la conexión a la base de datos")
+    return {"status": "ready"}
