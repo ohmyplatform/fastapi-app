@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fastapi-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fastapi-app
+  template:
+    metadata:
+      labels:
+        app: fastapi-app
+    spec:
+      containers:
+        - name: fastapi-app
+          image: ghcr.io/ohmyplatform/fastapi-mariadb:main   # Reemplace con su imagen de Docker Hub
+          ports:
+            - containerPort: 80
+          envFrom:
+            - secretRef:
+                name: fastapi-secrets
+
