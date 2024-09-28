@@ -20,4 +20,3 @@ spec:
           envFrom:
             - secretRef:
                 name: fastapi-secrets
-

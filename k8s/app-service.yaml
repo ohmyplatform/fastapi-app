@@ -7,6 +7,5 @@ spec:
     app: fastapi-app
   ports:
     - protocol: TCP
-      port: 80
-      targetPort: 80
----
+      port: 8080 # Puerto del servicio
+      targetPort: 80 # Puerto de los pods
