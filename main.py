@@ -3,6 +3,7 @@ from fastapi import FastAPI, HTTPException, Depends
 from pydantic import BaseModel
 from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.orm import sessionmaker, declarative_base
+from sqlalchemy.sql import text
 
 # Leer la URL de la base de datos desde la variable de entorno
 DATABASE_URL = os.environ.get("DATABASE_URL")
@@ -80,7 +81,7 @@ def liveness():
 def readiness(db=Depends(get_db)):
     try:
         # Realizar una consulta simple para verificar la conexión a la base de datos
-        db.execute("SELECT 1")
+        db.execute(text("SELECT 1"))
     except SQLAlchemyError:
         raise HTTPException(status_code=500, detail="Error en la conexión a la base de datos")
     return {"status": "ready"}
